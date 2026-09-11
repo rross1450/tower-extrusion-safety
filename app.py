@@ -383,6 +383,12 @@ def machine_page(barcode):
             if action == "lockout" and not reason:
                 flash("Specific reason for lockout is required.", "error")
                 return redirect(url_for("machine_page", barcode=machine["barcode"]) + builder_qs())
+            if action == "lockout":
+                required_steps = [s.get("id") for s in machine.get("lockout", []) if s.get("id")]
+                checked = set(request.form.getlist("lockout_step"))
+                if required_steps and not set(required_steps).issubset(checked):
+                    flash("Check off every lockout step before submitting.", "error")
+                    return redirect(url_for("machine_page", barcode=machine["barcode"]) + builder_qs())
             db = get_db()
             now = utc_now()
             if action == "lockout":

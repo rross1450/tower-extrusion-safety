@@ -442,6 +442,49 @@ body.builder .builder-block { display: block; }
 .step .title { font-weight: 600; margin: 0 0 0.25rem; }
 .step .detail { margin: 0; font-size: 0.9rem; color: var(--muted); }
 
+.step-check {
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  transition: background-color 0.15s, box-shadow 0.15s;
+}
+.step-check input.lockout-step {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+.step-check.is-checked {
+  background: color-mix(in srgb, var(--ok) 14%, var(--raised));
+}
+.step-check.is-checked .num {
+  background: var(--ok);
+  color: var(--bg);
+}
+.step-check.is-checked .title {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+.step-check:hover {
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.13);
+}
+#lockout-submit:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.lockout-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.step-check .title,
+.step-check .detail,
+.step-check .warn {
+  display: block;
+}
+
 .lockout-photo {
   width: 100%;
   border-radius: var(--radius);

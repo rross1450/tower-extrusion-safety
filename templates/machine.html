@@ -95,20 +95,25 @@
   {% if m.lockoutPhoto %}
   <img class="lockout-photo" src="{{ m.lockoutPhoto }}" alt="Lockout points for {{ m.name }}">
   {% endif %}
-  {% for step in m.lockout %}
-  <div class="step">
-    <div class="num">{{ loop.index }}</div>
-    <div class="body">
-      <p class="title">{{ step.title }}</p>
-      <p class="detail">{{ step.detail }}</p>
-      {% if step.warn %}<div class="warn">{{ step.warn }}</div>{% endif %}
-    </div>
-  </div>
-  {% endfor %}
 
-  <form class="checklist-form" method="post" action="{{ url_for('machine_page', barcode=m.barcode) }}{{ builder_qs }}">
+  <form class="checklist-form" id="lockout-form" method="post" action="{{ url_for('machine_page', barcode=m.barcode) }}{{ builder_qs }}">
     {% if builder %}<input type="hidden" name="builder" value="1">{% endif %}
     <input type="hidden" name="action" value="lockout">
+    <p class="form-lead" style="margin:0 0 0.75rem;">Check off every lockout step before you can submit.</p>
+    <div class="lockout-checklist" id="lockout-checklist">
+      {% for step in m.lockout %}
+      <label class="step step-check">
+        <input type="checkbox" class="lockout-step" name="lockout_step" value="{{ step.id }}" required>
+        <span class="num" aria-hidden="true">{{ loop.index }}</span>
+        <span class="body">
+          <span class="title">{{ step.title }}</span>
+          <span class="detail">{{ step.detail }}</span>
+          {% if step.warn %}<span class="warn">{{ step.warn }}</span>{% endif %}
+        </span>
+      </label>
+      {% endfor %}
+    </div>
+
     <h3>Confirm lockout</h3>
     <div class="field">
       <label for="lo-name">Your name</label>
@@ -122,7 +127,8 @@
       <label for="lo-reason">Specific reason for lockout</label>
       <textarea id="lo-reason" name="reason" required rows="3" placeholder="What work requires this lockout?"></textarea>
     </div>
-    <button class="btn btn-danger" type="submit" style="width:100%;">Submit lockout</button>
+    <p class="hint" id="lockout-hint">Complete all lockout steps to enable submit.</p>
+    <button class="btn btn-danger" id="lockout-submit" type="submit" style="width:100%;" disabled>Submit lockout</button>
   </form>
 </section>
 
@@ -205,5 +211,33 @@ JsBarcode("#barcode", {{ machine.barcode|tojson }}, {
   background: "#ffffff",
   lineColor: "#000000"
 });
+
+(function () {
+  var form = document.getElementById("lockout-form");
+  if (!form) return;
+  var boxes = Array.prototype.slice.call(form.querySelectorAll(".lockout-step"));
+  var btn = document.getElementById("lockout-submit");
+  var hint = document.getElementById("lockout-hint");
+  function sync() {
+    var done = boxes.every(function (b) { return b.checked; });
+    boxes.forEach(function (b) {
+      b.closest(".step-check").classList.toggle("is-checked", b.checked);
+    });
+    btn.disabled = !done;
+    if (hint) {
+      hint.textContent = done
+        ? "All steps checked — fill name, department, and reason, then submit."
+        : "Complete all lockout steps to enable submit.";
+    }
+  }
+  boxes.forEach(function (b) { b.addEventListener("change", sync); });
+  form.addEventListener("submit", function (e) {
+    if (!boxes.every(function (b) { return b.checked; })) {
+      e.preventDefault();
+      alert("Check off every lockout step before submitting.");
+    }
+  });
+  sync();
+})();
 </script>
 {% endblock %}
