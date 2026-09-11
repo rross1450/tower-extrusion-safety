@@ -10,7 +10,7 @@
   {% if builder %}
   <a class="icon-btn builder-only" href="{{ url_for('builder_edit', machine_id=m.id) }}?builder=1" aria-label="Edit">✎</a>
   {% endif %}
-  <button class="icon-btn" type="button" onclick="window.print()" aria-label="Print" title="Print">⎙</button>
+  <button class="icon-btn" type="button" id="print-barcode-btn" aria-label="Print barcode" title="Print barcode only">⎙</button>
 </div>
 
 {% if m.photo %}
@@ -22,7 +22,7 @@
     <p class="type">{{ m.type }}</p>
     <p class="sub">{{ m.manufacturer }} · SN {{ m.serial }} · {{ m.model }}</p>
   </div>
-  <div class="barcode-block">
+  <div class="barcode-block" id="barcode-label">
     <svg id="barcode"></svg>
     <span class="code">{{ m.barcode }}</span>
   </div>
@@ -202,7 +202,8 @@
 {% block scripts %}
 <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
 <script>
-JsBarcode("#barcode", {{ machine.barcode|tojson }}, {
+var barcodeValue = {{ machine.barcode|tojson }};
+JsBarcode("#barcode", barcodeValue, {
   format: "CODE39",
   displayValue: false,
   height: 48,
@@ -210,6 +211,46 @@ JsBarcode("#barcode", {{ machine.barcode|tojson }}, {
   margin: 4,
   background: "#ffffff",
   lineColor: "#000000"
+});
+
+document.getElementById("print-barcode-btn").addEventListener("click", function () {
+  var w = window.open("", "barcode-print", "width=480,height=320");
+  if (!w) {
+    alert("Allow pop-ups to print the barcode label.");
+    return;
+  }
+  var name = {{ machine.name|tojson }};
+  var safe = function (s) {
+    return String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  };
+  w.document.write(
+    "<!DOCTYPE html><html><head><title>Barcode " + safe(barcodeValue) + "</title>" +
+    "<style>" +
+    "html,body{margin:0;padding:0;background:#fff;color:#000;font-family:Arial,Helvetica,sans-serif;}" +
+    ".label{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:24px;box-sizing:border-box;}" +
+    ".name{font-size:18px;font-weight:700;margin:0 0 12px;text-align:center;}" +
+    ".code{font-size:16px;letter-spacing:0.08em;margin-top:8px;font-weight:600;}" +
+    "@media print{html,body{height:auto}.label{min-height:0;padding:8px}}" +
+    "</style>" +
+    '<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"><\/script>' +
+    "</head><body><div class=\"label\">" +
+    "<p class=\"name\">" + safe(name) + "</p>" +
+    '<svg id="print-bc"></svg>' +
+    "<div class=\"code\">" + safe(barcodeValue) + "</div>" +
+    "</div>" +
+    "<script>" +
+    "JsBarcode('#print-bc', " + JSON.stringify(barcodeValue) + ", {" +
+    "format:'CODE39',displayValue:false,height:72,width:2,margin:8,background:'#ffffff',lineColor:'#000000'" +
+    "});" +
+    "window.onload=function(){window.focus();window.print();};" +
+    "window.onafterprint=function(){window.close();};" +
+    "<\/script></body></html>"
+  );
+  w.document.close();
 });
 
 (function () {
