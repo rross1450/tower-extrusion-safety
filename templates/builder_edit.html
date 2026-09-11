@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="topbar">
+  <a class="icon-btn" href="{{ url_for('index') }}" aria-label="Back">←</a>
+  <div class="titles">
+    <p class="eyebrow">Machines</p>
+    <h1>{{ "Add machine" if is_new else "Edit machine" }}</h1>
+  </div>
+</div>
+
+<p class="form-lead">Add a card under Shipping 1, Press 5, or a new area name. Nothing is saved until you click Save.</p>
+
+<form method="post" action="{% if is_new %}{{ url_for('builder_new') }}{% else %}{{ url_for('builder_edit', machine_id=machine.id) }}{% endif %}" style="margin-top:1rem;" id="machine-form">
+  <div class="field">
+    <label for="id">ID</label>
+    <input id="id" name="id" value="{{ machine.id }}" {% if not is_new %}readonly{% endif %} placeholder="unique-slug" {% if is_new %}{% else %}required{% endif %}>
+    {% if is_new %}<p class="hint">Leave blank to auto-generate.</p>{% endif %}
+  </div>
+  <div class="field">
+    <label for="barcode">Barcode tag</label>
+    <input id="barcode" name="barcode" value="{{ machine.barcode }}" placeholder="Leave blank to auto-generate">
+    {% if is_new %}<p class="hint">Leave blank and we’ll assign the next tag for that area (e.g. M-PRS-0006).</p>{% endif %}
+  </div>
+  <div class="field">
+    <label for="name">Machine name</label>
+    <input id="name" name="name" value="{{ machine.name }}" required placeholder="e.g. Age Oven 8">
+  </div>
+
+  <div class="field">
+    <label for="area_pick">Area</label>
+    <select id="area_pick" name="area_pick">
+      {% set known = known_areas or ["Shipping 1", "Press 5"] %}
+      {% set cur = machine.area or "Press 5" %}
+      {% set in_known = cur in known %}
+      {% for a in known %}
+      <option value="{{ a }}" {% if cur == a %}selected{% endif %}>{{ a }}</option>
+      {% endfor %}
+      <option value="__other__" {% if not in_known %}selected{% endif %}>New area…</option>
+    </select>
+  </div>
+  <div class="field" id="area_other_wrap" {% if in_known %}hidden{% endif %}>
+    <label for="area_other">New area name</label>
+    <input id="area_other" name="area_other" value="{% if not in_known %}{{ cur }}{% endif %}" placeholder="e.g. Press 6">
+  </div>
+  <input type="hidden" name="area" id="area" value="{{ cur }}">
+
+  <div class="field">
+    <label for="bay">Bay / location</label>
+    <input id="bay" name="bay" value="{{ machine.bay }}">
+  </div>
+  <div class="field">
+    <label for="type">Type</label>
+    <input id="type" name="type" value="{{ machine.type }}">
+  </div>
+  <div class="field">
+    <label for="model">Model</label>
+    <input id="model" name="model" value="{{ machine.model }}">
+  </div>
+  <div class="field">
+    <label for="manufacturer">Manufacturer</label>
+    <input id="manufacturer" name="manufacturer" value="{{ machine.manufacturer }}">
+  </div>
+  <div class="field">
+    <label for="serial">Serial</label>
+    <input id="serial" name="serial" value="{{ machine.serial }}">
+  </div>
+  <div class="field">
+    <label for="photo">Photo URL</label>
+    <input id="photo" name="photo" value="{{ machine.photo }}">
+  </div>
+  <div class="field">
+    <label for="lockoutPhoto">Lockout photo URL (one for whole lockout section)</label>
+    <input id="lockoutPhoto" name="lockoutPhoto" value="{{ machine.lockoutPhoto or '' }}">
+  </div>
+
+  <div class="field">
+    <label>PPE</label>
+    <div class="ppe-checks">
+      {% for key in ppe_keys %}
+      <label>
+        <input type="checkbox" name="ppe" value="{{ key }}" {% if key in machine.ppe %}checked{% endif %}>
+        {{ ppe_label[key] }}
+      </label>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="energy_json">Energy (JSON array)</label>
+    <textarea id="energy_json" name="energy_json">{{ machine.energy|tojson(indent=2) }}</textarea>
+  </div>
+  <div class="field">
+    <label for="hazards_json">Hazards (JSON array)</label>
+    <textarea id="hazards_json" name="hazards_json">{{ machine.hazards|tojson(indent=2) }}</textarea>
+  </div>
+  <div class="field">
+    <label for="lockout_json">Lockout steps (JSON array)</label>
+    <textarea id="lockout_json" name="lockout_json">{{ machine.lockout|tojson(indent=2) }}</textarea>
+  </div>
+  <div class="field">
+    <label for="inspect_json">Inspect steps (JSON array)</label>
+    <textarea id="inspect_json" name="inspect_json">{{ machine.inspect|tojson(indent=2) }}</textarea>
+  </div>
+  <div class="field">
+    <label for="restart_json">Restart steps (JSON array)</label>
+    <textarea id="restart_json" name="restart_json">{{ machine.restart|tojson(indent=2) }}</textarea>
+  </div>
+
+  <div class="field"><label for="estop">E-stop</label><input id="estop" name="estop" value="{{ machine.emergency.estop }}"></div>
+  <div class="field"><label for="firstAid">First aid</label><input id="firstAid" name="firstAid" value="{{ machine.emergency.firstAid }}"></div>
+  <div class="field"><label for="fire">Fire</label><input id="fire" name="fire" value="{{ machine.emergency.fire }}"></div>
+  <div class="field"><label for="supervisor">Supervisor</label><input id="supervisor" name="supervisor" value="{{ machine.emergency.supervisor }}"></div>
+  <div class="field"><label for="radio">Radio</label><input id="radio" name="radio" value="{{ machine.emergency.radio }}"></div>
+
+  <div class="field">
+    <label for="notes">Notes (one per line)</label>
+    <textarea id="notes" name="notes">{% for n in machine.notes %}{{ n }}
+{% endfor %}</textarea>
+  </div>
+  <div class="field">
+    <label for="permits">Permits (one per line)</label>
+    <textarea id="permits" name="permits">{% for p in machine.permits %}{{ p }}
+{% endfor %}</textarea>
+  </div>
+
+  <button class="btn btn-primary" type="submit">Save</button>
+  <p class="hint" style="margin-top:0.75rem;">Nothing is saved until you click Save.</p>
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function () {
+  var pick = document.getElementById("area_pick");
+  var otherWrap = document.getElementById("area_other_wrap");
+  var other = document.getElementById("area_other");
+  var hidden = document.getElementById("area");
+  var form = document.getElementById("machine-form");
+  function sync() {
+    if (pick.value === "__other__") {
+      otherWrap.hidden = false;
+      hidden.value = (other.value || "").trim();
+    } else {
+      otherWrap.hidden = true;
+      hidden.value = pick.value;
+    }
+  }
+  pick.addEventListener("change", sync);
+  other.addEventListener("input", sync);
+  form.addEventListener("submit", function (e) {
+    sync();
+    if (!hidden.value) {
+      e.preventDefault();
+      alert("Pick Shipping 1, Press 5, or type a new area name.");
+      if (pick.value === "__other__") other.focus();
+      else pick.focus();
+    }
+  });
+  sync();
+})();
+</script>
+{% endblock %}

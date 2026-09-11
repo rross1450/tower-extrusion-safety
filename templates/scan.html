@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="topbar">
+  <a class="icon-btn" href="{{ url_for('index') }}{{ builder_qs }}" aria-label="Back">←</a>
+  <div class="titles">
+    <p class="eyebrow">Lookup</p>
+    <h1>Scan machine tag</h1>
+  </div>
+</div>
+
+<div class="scan-box">
+  {% if error %}
+  <div class="flash flash-error">{{ error }}</div>
+  {% endif %}
+
+  <form method="post" action="{{ url_for('scan') }}{{ builder_qs }}">
+    {% if builder %}<input type="hidden" name="builder" value="1">{% endif %}
+    <div class="field">
+      <label for="barcode">Barcode tag</label>
+      <input id="barcode" name="barcode" type="text" placeholder="e.g. M-OVN-0102" autocomplete="off" autocapitalize="characters" required>
+    </div>
+    <button class="btn btn-primary" type="submit">Open procedure</button>
+  </form>
+
+  <p class="scan-divider">or use camera</p>
+
+  <div id="reader"></div>
+  <p style="margin-top:0.75rem;font-size:0.85rem;color:var(--faint);text-align:center;">
+    Point at a Code 39 / QR tag, or choose a photo from your phone.
+  </p>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<script>
+(function () {
+  const builder = {{ 'true' if builder else 'false' }};
+  function go(decoded) {
+    const code = (decoded || "").trim().toUpperCase();
+    if (!code) return;
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = "{{ url_for('scan') }}" + (builder ? "?builder=1" : "");
+    const input = document.createElement("input");
+    input.name = "barcode";
+    input.value = code;
+    form.appendChild(input);
+    if (builder) {
+      const b = document.createElement("input");
+      b.name = "builder";
+      b.value = "1";
+      form.appendChild(b);
+    }
+    document.body.appendChild(form);
+    form.submit();
+  }
+
+  if (!window.Html5Qrcode) return;
+  const scanner = new Html5Qrcode("reader");
+  const config = { fps: 8, qrbox: { width: 250, height: 120 }, formatsToSupport: undefined };
+  Html5Qrcode.getCameras().then(cameras => {
+    if (!cameras || !cameras.length) return;
+    const camId = cameras[cameras.length - 1].id;
+    scanner.start(camId, config, go, () => {}).catch(() => {});
+  }).catch(() => {});
+
+  // File fallback button
+  const fileBtn = document.createElement("button");
+  fileBtn.type = "button";
+  fileBtn.className = "btn btn-ghost";
+  fileBtn.style.marginTop = "0.75rem";
+  fileBtn.style.width = "100%";
+  fileBtn.textContent = "Scan from photo";
+  document.querySelector(".scan-box").appendChild(fileBtn);
+  const fileInput = document.createElement("input");
+  fileInput.type = "file";
+  fileInput.accept = "image/*";
+  fileInput.capture = "environment";
+  fileInput.style.display = "none";
+  document.body.appendChild(fileInput);
+  fileBtn.addEventListener("click", () => fileInput.click());
+  fileInput.addEventListener("change", () => {
+    if (!fileInput.files || !fileInput.files[0]) return;
+    scanner.scanFile(fileInput.files[0], true)
+      .then(go)
+      .catch(() => alert("Could not read a barcode from that photo."));
+  });
+})();
+</script>
+{% endblock %}

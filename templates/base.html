@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ title or "Tower Extrusion Safety Procedures" }}{% endblock %}</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+  {% block head %}{% endblock %}
+</head>
+<body class="{% if builder %}builder{% endif %}">
+  <div class="page-wrap">
+    <aside class="gutter gutter-left" aria-hidden="true">
+      <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=480&q=60" alt="">
+    </aside>
+    <aside class="gutter gutter-right" aria-hidden="true">
+      <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=480&q=60" alt="">
+    </aside>
+    <div class="app">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="flash flash-{{ category }}">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+      {% block content %}{% endblock %}
+      <nav class="footer-links" aria-label="Main">
+        <a href="{{ url_for('index') }}{{ builder_qs }}" class="{% if request.endpoint == 'index' %}active{% endif %}">Floor</a>
+        <a href="{{ url_for('scan') }}{{ builder_qs }}" class="{% if request.endpoint == 'scan' %}active{% endif %}">Scan</a>
+        <a href="{{ url_for('builder_new') }}" class="{% if request.endpoint in ('builder_new', 'builder_edit') %}active{% endif %}">Add</a>
+        <a href="{{ url_for('active') }}{{ builder_qs }}" class="{% if request.endpoint == 'active' %}active{% endif %}">Active</a>
+        <a href="{{ url_for('admin_log') }}{{ builder_qs }}" class="{% if request.endpoint == 'admin_log' %}active{% endif %}">Log</a>
+      </nav>
+    </div>
+  </div>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

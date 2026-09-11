@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="topbar">
+  <a class="icon-btn" href="{{ url_for('index') }}{{ builder_qs }}" aria-label="Back">←</a>
+  <div class="titles">
+    <p class="eyebrow">Status</p>
+    <h1>Active lockouts</h1>
+  </div>
+</div>
+
+{% if not locks %}
+<p style="color:var(--muted);margin-top:1.5rem;">No machines are locked out right now.</p>
+{% else %}
+<ul class="card-list" style="margin-top:1rem;">
+  {% for L in locks %}
+  <li>
+    <a class="machine-link" href="{{ url_for('machine_page', barcode=L.barcode) }}{{ builder_qs }}">
+      <div>
+        <div class="name">{{ L.name }}</div>
+        <div class="meta">{{ L.area }}{% if L.bay %} · {{ L.bay }}{% endif %} · {{ L.barcode }}</div>
+        <div class="meta" style="margin-top:0.25rem;">{{ L.person_name }} · {{ L.department }} · {{ L.locked_at }}</div>
+        {% if L.reason %}<div class="meta" style="margin-top:0.25rem;">Reason: {{ L.reason }}</div>{% endif %}
+      </div>
+      <span class="chev">›</span>
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

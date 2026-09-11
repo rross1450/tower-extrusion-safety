@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+{% block content %}
+{% set m = machine %}
+<div class="topbar">
+  <a class="icon-btn" href="{{ url_for('index') }}{{ builder_qs }}" aria-label="Back to floor">←</a>
+  <div class="titles">
+    <p class="eyebrow">{{ m.area }} · {{ m.bay }}</p>
+    <h1>{{ m.name }}</h1>
+  </div>
+  {% if builder %}
+  <a class="icon-btn builder-only" href="{{ url_for('builder_edit', machine_id=m.id) }}?builder=1" aria-label="Edit">✎</a>
+  {% endif %}
+  <button class="icon-btn" type="button" onclick="window.print()" aria-label="Print" title="Print">⎙</button>
+</div>
+
+{% if m.photo %}
+<img src="{{ m.photo }}" alt="{{ m.type }}" style="width:100%;border-radius:12px;margin:0.5rem 0;aspect-ratio:16/9;object-fit:cover;">
+{% endif %}
+
+<div class="machine-hero">
+  <div>
+    <p class="type">{{ m.type }}</p>
+    <p class="sub">{{ m.manufacturer }} · SN {{ m.serial }} · {{ m.model }}</p>
+  </div>
+  <div class="barcode-block">
+    <svg id="barcode"></svg>
+    <span class="code">{{ m.barcode }}</span>
+  </div>
+</div>
+
+<div class="stat-grid">
+  <div class="stat">
+    <div class="label">Energy</div>
+    <div class="value">{{ m.energy|length }}</div>
+  </div>
+  <div class="stat">
+    <div class="label">Lockout steps</div>
+    <div class="value">{{ m.lockout|length }}</div>
+  </div>
+</div>
+
+{% if lock %}
+<div class="lock-banner">
+  <strong>LOCKED OUT</strong> — {{ lock.person_name }} ({{ lock.department }}) since {{ lock.locked_at }}
+  {% if lock.reason %}<div style="margin-top:0.4rem;font-weight:500;">Reason: {{ lock.reason }}</div>{% endif %}
+</div>
+{% endif %}
+
+{% if m.permits and m.permits|length %}
+<div class="permits">
+  <strong>Extra permits</strong>
+  <ul>
+    {% for p in m.permits %}<li>{{ p }}</li>{% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+<section class="section">
+  <div class="section-head"><h2>Required PPE</h2></div>
+  <div class="chip-row">
+    {% for id in m.ppe %}
+    <span class="chip">{{ ppe_label.get(id, id) }}</span>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>Energy sources</h2></div>
+  {% for e in m.energy %}
+  <div class="panel">
+    <p class="kind">{{ energy_label.get(e.kind, e.kind|capitalize) }}</p>
+    <p class="title">{{ e.label }}</p>
+    <p class="detail"><strong>Isolate.</strong> {{ e.isolation }}</p>
+    <p class="detail"><strong>Verify.</strong> {{ e.verify }}</p>
+  </div>
+  {% endfor %}
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>Hazards</h2></div>
+  {% for h in m.hazards %}
+  <div class="hazard-row">
+    <div>
+      <strong>{{ h.title }}</strong>
+      <p class="injury">{{ h.injury }}</p>
+    </div>
+    {% set sev = h.severity %}
+    <span class="badge badge-{% if sev == 'critical' %}hazard{% elif sev == 'high' %}warn{% else %}default{% endif %}">{{ sev }}</span>
+  </div>
+  {% endfor %}
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>Lockout steps</h2></div>
+  {% if m.lockoutPhoto %}
+  <img class="lockout-photo" src="{{ m.lockoutPhoto }}" alt="Lockout points for {{ m.name }}">
+  {% endif %}
+  {% for step in m.lockout %}
+  <div class="step">
+    <div class="num">{{ loop.index }}</div>
+    <div class="body">
+      <p class="title">{{ step.title }}</p>
+      <p class="detail">{{ step.detail }}</p>
+      {% if step.warn %}<div class="warn">{{ step.warn }}</div>{% endif %}
+    </div>
+  </div>
+  {% endfor %}
+
+  <form class="checklist-form" method="post" action="{{ url_for('machine_page', barcode=m.barcode) }}{{ builder_qs }}">
+    {% if builder %}<input type="hidden" name="builder" value="1">{% endif %}
+    <input type="hidden" name="action" value="lockout">
+    <h3>Confirm lockout</h3>
+    <div class="field">
+      <label for="lo-name">Your name</label>
+      <input id="lo-name" name="person_name" required autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="lo-dept">Department</label>
+      <input id="lo-dept" name="department" required autocomplete="organization">
+    </div>
+    <div class="field">
+      <label for="lo-reason">Specific reason for lockout</label>
+      <textarea id="lo-reason" name="reason" required rows="3" placeholder="What work requires this lockout?"></textarea>
+    </div>
+    <button class="btn btn-danger" type="submit" style="width:100%;">Submit lockout</button>
+  </form>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>Inspect before work</h2></div>
+  {% for step in m.inspect %}
+  <div class="step">
+    <div class="num">{{ loop.index }}</div>
+    <div class="body">
+      <p class="title">{{ step.title }}</p>
+      <p class="detail">{{ step.detail }}</p>
+      {% if step.warn %}<div class="warn">{{ step.warn }}</div>{% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>Restart</h2></div>
+  {% for step in m.restart %}
+  <div class="step">
+    <div class="num">{{ loop.index }}</div>
+    <div class="body">
+      <p class="title">{{ step.title }}</p>
+      <p class="detail">{{ step.detail }}</p>
+      {% if step.warn %}<div class="warn">{{ step.warn }}</div>{% endif %}
+    </div>
+  </div>
+  {% endfor %}
+
+  <form class="checklist-form" method="post" action="{{ url_for('machine_page', barcode=m.barcode) }}{{ builder_qs }}">
+    {% if builder %}<input type="hidden" name="builder" value="1">{% endif %}
+    <input type="hidden" name="action" value="restart">
+    <h3>Confirm restart</h3>
+    <p style="font-size:0.85rem;color:var(--muted);margin:0 0 0.75rem;">Submitting clears this machine’s active lockout.</p>
+    <div class="field">
+      <label for="rs-name">Your name</label>
+      <input id="rs-name" name="person_name" required autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="rs-dept">Department</label>
+      <input id="rs-dept" name="department" required autocomplete="organization">
+    </div>
+    <button class="btn btn-ok" type="submit" style="width:100%;">Submit restart</button>
+  </form>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>Emergency</h2></div>
+  <div class="panel">
+    <p class="detail"><strong>E-stop.</strong> {{ m.emergency.estop }}</p>
+    <p class="detail"><strong>First aid.</strong> {{ m.emergency.firstAid }}</p>
+    <p class="detail"><strong>Fire.</strong> {{ m.emergency.fire }}</p>
+    <p class="detail"><strong>Supervisor.</strong> {{ m.emergency.supervisor }}</p>
+    <p class="detail"><strong>Radio.</strong> {{ m.emergency.radio }}</p>
+  </div>
+</section>
+
+{% if m.notes and m.notes|length %}
+<section class="section">
+  <div class="section-head"><h2>Notes</h2></div>
+  <ul class="notes-list">
+    {% for n in m.notes %}<li>{{ n }}</li>{% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+<p class="disclaimer">{{ disclaimer }}</p>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+<script>
+JsBarcode("#barcode", {{ machine.barcode|tojson }}, {
+  format: "CODE39",
+  displayValue: false,
+  height: 48,
+  width: 1.4,
+  margin: 4,
+  background: "#ffffff",
+  lineColor: "#000000"
+});
+</script>
+{% endblock %}

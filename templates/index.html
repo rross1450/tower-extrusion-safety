@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+<header class="site-header">
+  <img class="logo" src="{{ url_for('static', filename='brand/tower-extrusions-logo-on-dark.svg') }}" alt="Tower Extrusions">
+  <h1>Tower Extrusion Safety Procedures</h1>
+  <p class="subtitle">Scan a tag before you put a wrench on it.</p>
+</header>
+
+<a class="btn btn-primary" href="{{ url_for('scan') }}{{ builder_qs }}">Scan machine tag</a>
+
+<a class="btn btn-ghost add-machine" href="{{ url_for('builder_new') }}">Add a machine card</a>
+
+<form class="search-form" method="get" action="{{ url_for('index') }}">
+  {% if builder %}<input type="hidden" name="builder" value="1">{% endif %}
+  <span class="icon" aria-hidden="true">⌕</span>
+  <input type="search" name="q" value="{{ q }}" placeholder="Search name, bay, or tag" id="floor-search" autocomplete="off">
+</form>
+
+{% if active_count > 0 %}
+<a class="banner" href="{{ url_for('active') }}{{ builder_qs }}">
+  <strong>{{ active_count }} machine{% if active_count != 1 %}s{% endif %} locked out</strong>
+  <span>View</span>
+</a>
+{% endif %}
+
+{% if q %}
+<section class="section">
+  <div class="section-head">
+    <h2>{% if machines %}Results{% else %}No match{% endif %}</h2>
+    <span class="count">{{ machines|length }}</span>
+  </div>
+  {% if not machines %}
+  <p style="color:var(--muted);font-size:0.9rem;">Nothing on the floor matches that. Try the barcode, like M-OVN-0102.</p>
+  {% else %}
+  <ul class="card-list">
+    {% for m in machines %}
+    <li>
+      <a class="machine-link" href="{{ url_for('machine_page', barcode=m.barcode) }}{{ builder_qs }}">
+        <div>
+          <div class="name">{{ m.name }}</div>
+          <div class="meta">{{ m.area }} · {{ m.bay }} · {{ m.barcode }}</div>
+        </div>
+        <span class="chev">›</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</section>
+{% else %}
+  {% for group in grouped %}
+  <section class="section">
+    <div class="section-head">
+      <h2>{{ group.area }}</h2>
+      <span class="count">{{ group.machines|length }}</span>
+    </div>
+    <ul class="card-list">
+      {% for m in group.machines %}
+      <li>
+        <div class="machine-link">
+          <a href="{{ url_for('machine_page', barcode=m.barcode) }}{{ builder_qs }}" style="flex:1;min-width:0;">
+            <div class="name">{{ m.name }}</div>
+            <div class="meta">{{ m.bay }} · {{ m.barcode }}</div>
+          </a>
+          <a class="btn btn-sm btn-ghost" href="{{ url_for('builder_edit', machine_id=m.id) }}">Edit</a>
+          <a href="{{ url_for('machine_page', barcode=m.barcode) }}{{ builder_qs }}" class="chev" aria-hidden="true">›</a>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endfor %}
+{% endif %}
+{% endblock %}

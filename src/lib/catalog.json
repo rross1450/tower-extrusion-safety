@@ -1,0 +1,1700 @@
+[
+  {
+    "id": "oven-12",
+    "barcode": "M-OVN-0102",
+    "name": "Age Oven 1&2",
+    "model": "SWH-1200 dual",
+    "type": "Aluminum aging oven",
+    "area": "Shipping 1",
+    "bay": "Ovens 1–2",
+    "photo": "",
+    "lockoutPhoto": "",
+    "manufacturer": "Wisconsin Oven",
+    "serial": "WO-1201",
+    "ppe": [
+      "glasses",
+      "face-shield",
+      "boots",
+      "fr-clothing",
+      "high-vis"
+    ],
+    "energy": [
+      {
+        "kind": "electrical",
+        "label": "480 V 3-phase fans, elements, and controls",
+        "isolation": "Disconnect SHP-12. Apply your lock and tag.",
+        "verify": "Control panel dark. Meter load-side lugs. Circulation fans do not bump."
+      },
+      {
+        "kind": "gas",
+        "label": "Natural gas burner train",
+        "isolation": "Close and lock gas cock GAS-12. Bleed the train per the posted diagram.",
+        "verify": "Both gas-train gauges at 0. Combustible-gas meter at the burner < 10% LEL."
+      },
+      {
+        "kind": "thermal",
+        "label": "Oven chamber ~350–400 °F during age",
+        "isolation": "Run the posted cool-down. Do not enter or reach into the chamber until the pyrometer is below the cool-to-touch limit, or treat every surface as hot.",
+        "verify": "Chamber pyrometer below the posted number. Racks cool to a gloved hand, or work as hot."
+      }
+    ],
+    "hazards": [
+      {
+        "title": "Hot racks and profiles",
+        "injury": "Severe burns from loads and oven walls",
+        "severity": "critical"
+      },
+      {
+        "title": "Gas ignition",
+        "injury": "Fire or flash in the burner / chamber",
+        "severity": "critical"
+      },
+      {
+        "title": "Walk-in chamber",
+        "injury": "Heat stress, asphyxiation if the oven is entered",
+        "severity": "critical"
+      },
+      {
+        "title": "Load cart / forklift",
+        "injury": "Struck-by on the Shipping 1 aisle",
+        "severity": "high"
+      }
+    ],
+    "lockout": [
+      {
+        "id": "n1",
+        "title": "Notify Shipping 1",
+        "detail": "Tell the Shipping 1 lead and the load crew. Ovens 1 and 2 share this card — both come down together."
+      },
+      {
+        "id": "n2",
+        "title": "Stop the age cycle from the HMI",
+        "detail": "Do not open the door on a live cycle. Abort or wait for the soak to finish, then local stop."
+      },
+      {
+        "id": "n3",
+        "title": "Lock electrical and gas",
+        "detail": "Disconnect SHP-12 OFF. Gas cock GAS-12 closed. One lock per person on each hasp. Lock both oven disconnects on the SHP-12 hasp.",
+        "warn": "These ovens can auto-restart on a temperature fault. A dark screen is not isolation."
+      },
+      {
+        "id": "n4",
+        "title": "Cool down or work as hot",
+        "detail": "Follow the cool-down on the door. Pull loads only with face shield and FR. Never step into the chamber to chase a stuck stick.",
+        "warn": "Entering the oven is a permit-required confined space."
+      },
+      {
+        "id": "n5",
+        "title": "Verify zero energy",
+        "detail": "Attempt a cycle start. Fans still. Burner does not light. Gas gauges at 0."
+      }
+    ],
+    "inspect": [
+      {
+        "id": "i1",
+        "title": "Door latches and seals",
+        "detail": "Doors latch fully. Gasket not torn. Interlock kills the burners when a door is open."
+      },
+      {
+        "id": "i2",
+        "title": "Load carts and stops",
+        "detail": "Carts on the track. Wheel stops in. No profile hanging off the rack."
+      },
+      {
+        "id": "i3",
+        "title": "Burner and relief",
+        "detail": "No gas odor. Relief and stack clear. High-limit tag current."
+      }
+    ],
+    "restart": [
+      {
+        "id": "r1",
+        "title": "People out, doors latched, loads set",
+        "detail": "Nobody in the chamber or on the track. Confirm the age recipe on the HMI."
+      },
+      {
+        "id": "r2",
+        "title": "Restore gas, then electric",
+        "detail": "Open the gas cock, then the disconnect. Purge per the burner management system. Do not bypass the purge."
+      }
+    ],
+    "emergency": {
+      "estop": "Red mushrooms on the SHP-12 cabinet and on each oven door frame",
+      "firstAid": "Shipping 1 first-aid cabinet, north column",
+      "fire": "ABC extinguisher at the oven aisle; pull station at the dock door",
+      "supervisor": "Shipping 1 lead",
+      "radio": "Channel 2"
+    },
+    "notes": [
+      "Ovens 1 and 2 share a gas train. Isolating this card kills fuel to both chambers.",
+      "Call the Shipping 1 lead before taking a paired oven down — the other door may still be in cycle."
+    ],
+    "permits": [
+      "Confined space if entering the chamber"
+    ]
+  },
+  {
+    "id": "oven-34",
+    "barcode": "M-OVN-0304",
+    "name": "Age Oven 3&4",
+    "model": "SWH-1200 dual",
+    "type": "Aluminum aging oven",
+    "area": "Shipping 1",
+    "bay": "Ovens 3–4",
+    "photo": "",
+    "lockoutPhoto": "",
+    "manufacturer": "Wisconsin Oven",
+    "serial": "WO-3402",
+    "ppe": [
+      "glasses",
+      "face-shield",
+      "boots",
+      "fr-clothing",
+      "high-vis"
+    ],
+    "energy": [
+      {
+        "kind": "electrical",
+        "label": "480 V 3-phase fans, elements, and controls",
+        "isolation": "Disconnect SHP-34. Apply your lock and tag.",
+        "verify": "Control panel dark. Meter load-side lugs. Circulation fans do not bump."
+      },
+      {
+        "kind": "gas",
+        "label": "Natural gas burner train",
+        "isolation": "Close and lock gas cock GAS-34. Bleed the train per the posted diagram.",
+        "verify": "Both gas-train gauges at 0. Combustible-gas meter at the burner < 10% LEL."
+      },
+      {
+        "kind": "thermal",
+        "label": "Oven chamber ~350–400 °F during age",
+        "isolation": "Run the posted cool-down. Do not enter or reach into the chamber until the pyrometer is below the cool-to-touch limit, or treat every surface as hot.",
+        "verify": "Chamber pyrometer below the posted number. Racks cool to a gloved hand, or work as hot."
+      }
+    ],
+    "hazards": [
+      {
+        "title": "Hot racks and profiles",
+        "injury": "Severe burns from loads and oven walls",
+        "severity": "critical"
+      },
+      {
+        "title": "Gas ignition",
+        "injury": "Fire or flash in the burner / chamber",
+        "severity": "critical"
+      },
+      {
+        "title": "Walk-in chamber",
+        "injury": "Heat stress, asphyxiation if the oven is entered",
+        "severity": "critical"
+      },
+      {
+        "title": "Load cart / forklift",
+        "injury": "Struck-by on the Shipping 1 aisle",
+        "severity": "high"
+      }
+    ],
+    "lockout": [
+      {
+        "id": "n1",
+        "title": "Notify Shipping 1",
+        "detail": "Hold the 3&4 load queue. Forklifts use this aisle — post the LOTO board at the track."
+      },
+      {
+        "id": "n2",
+        "title": "Stop the age cycle from the HMI",
+        "detail": "Do not open the door on a live cycle. Abort or wait for the soak to finish, then local stop."
+      },
+      {
+        "id": "n3",
+        "title": "Lock electrical and gas",
+        "detail": "Disconnect SHP-34 OFF. Gas cock GAS-34 closed. One lock per person on each hasp. Lock SHP-34. Oven 3 and Oven 4 disconnects are stacked — tag both.",
+        "warn": "These ovens can auto-restart on a temperature fault. A dark screen is not isolation."
+      },
+      {
+        "id": "n4",
+        "title": "Cool down or work as hot",
+        "detail": "Follow the cool-down on the door. Pull loads only with face shield and FR. Never step into the chamber to chase a stuck stick.",
+        "warn": "Entering the oven is a permit-required confined space."
+      },
+      {
+        "id": "n5",
+        "title": "Verify zero energy",
+        "detail": "Attempt a cycle start. Fans still. Burner does not light. Gas gauges at 0."
+      }
+    ],
+    "inspect": [
+      {
+        "id": "i1",
+        "title": "Door latches and seals",
+        "detail": "Doors latch fully. Gasket not torn. Interlock kills the burners when a door is open."
+      },
+      {
+        "id": "i2",
+        "title": "Load carts and stops",
+        "detail": "Carts on the track. Wheel stops in. No profile hanging off the rack."
+      },
+      {
+        "id": "i3",
+        "title": "Burner and relief",
+        "detail": "No gas odor. Relief and stack clear. High-limit tag current."
+      }
+    ],
+    "restart": [
+      {
+        "id": "r1",
+        "title": "People out, doors latched, loads set",
+        "detail": "Nobody in the chamber or on the track. Confirm the age recipe on the HMI."
+      },
+      {
+        "id": "r2",
+        "title": "Restore gas, then electric",
+        "detail": "Open the gas cock, then the disconnect. Purge per the burner management system. Do not bypass the purge."
+      }
+    ],
+    "emergency": {
+      "estop": "Mushrooms on SHP-34 and the shared load-track pull-cord",
+      "firstAid": "Shipping 1 first-aid cabinet, north column",
+      "fire": "ABC extinguisher at the oven aisle; pull station at the dock door",
+      "supervisor": "Shipping 1 lead",
+      "radio": "Channel 2"
+    },
+    "notes": [
+      "The load track serves both doors. Chock carts before you work on a latch or seal.",
+      "Call the Shipping 1 lead before taking a paired oven down — the other door may still be in cycle."
+    ],
+    "permits": [
+      "Confined space if entering the chamber"
+    ]
+  },
+  {
+    "id": "oven-5",
+    "barcode": "M-OVN-0005",
+    "name": "Age Oven 5",
+    "model": "SWH-800 single",
+    "type": "Aluminum aging oven",
+    "area": "Shipping 1",
+    "bay": "Oven 5",
+    "photo": "",
+    "lockoutPhoto": "",
+    "manufacturer": "Wisconsin Oven",
+    "serial": "WO-0503",
+    "ppe": [
+      "glasses",
+      "face-shield",
+      "boots",
+      "fr-clothing",
+      "high-vis"
+    ],
+    "energy": [
+      {
+        "kind": "electrical",
+        "label": "480 V 3-phase fans, elements, and controls",
+        "isolation": "Disconnect SHP-5. Apply your lock and tag.",
+        "verify": "Control panel dark. Meter load-side lugs. Circulation fans do not bump."
+      },
+      {
+        "kind": "gas",
+        "label": "Natural gas burner train",
+        "isolation": "Close and lock gas cock GAS-5. Bleed the train per the posted diagram.",
+        "verify": "Both gas-train gauges at 0. Combustible-gas meter at the burner < 10% LEL."
+      },
+      {
+        "kind": "thermal",
+        "label": "Oven chamber ~350–400 °F during age",
+        "isolation": "Run the posted cool-down. Do not enter or reach into the chamber until the pyrometer is below the cool-to-touch limit, or treat every surface as hot.",
+        "verify": "Chamber pyrometer below the posted number. Racks cool to a gloved hand, or work as hot."
+      }
+    ],
+    "hazards": [
+      {
+        "title": "Hot racks and profiles",
+        "injury": "Severe burns from loads and oven walls",
+        "severity": "critical"
+      },
+      {
+        "title": "Gas ignition",
+        "injury": "Fire or flash in the burner / chamber",
+        "severity": "critical"
+      },
+      {
+        "title": "Walk-in chamber",
+        "injury": "Heat stress, asphyxiation if the oven is entered",
+        "severity": "critical"
+      },
+      {
+        "title": "Load cart / forklift",
+        "injury": "Struck-by on the Shipping 1 aisle",
+        "severity": "high"
+      }
+    ],
+    "lockout": [
+      {
+        "id": "n1",
+        "title": "Notify Shipping 1",
+        "detail": "Oven 5 stands alone. Tell Shipping 1 you are taking only this chamber — 3&4 and 6&7 stay up."
+      },
+      {
+        "id": "n2",
+        "title": "Stop the age cycle from the HMI",
+        "detail": "Do not open the door on a live cycle. Abort or wait for the soak to finish, then local stop."
+      },
+      {
+        "id": "n3",
+        "title": "Lock electrical and gas",
+        "detail": "Disconnect SHP-5 OFF. Gas cock GAS-5 closed. One lock per person on each hasp. Single disconnect. Do not lock SHP-34 or SHP-67 by mistake.",
+        "warn": "These ovens can auto-restart on a temperature fault. A dark screen is not isolation."
+      },
+      {
+        "id": "n4",
+        "title": "Cool down or work as hot",
+        "detail": "Follow the cool-down on the door. Pull loads only with face shield and FR. Never step into the chamber to chase a stuck stick.",
+        "warn": "Entering the oven is a permit-required confined space."
+      },
+      {
+        "id": "n5",
+        "title": "Verify zero energy",
+        "detail": "Attempt a cycle start. Fans still. Burner does not light. Gas gauges at 0."
+      }
+    ],
+    "inspect": [
+      {
+        "id": "i1",
+        "title": "Door latches and seals",
+        "detail": "Doors latch fully. Gasket not torn. Interlock kills the burners when a door is open."
+      },
+      {
+        "id": "i2",
+        "title": "Load carts and stops",
+        "detail": "Carts on the track. Wheel stops in. No profile hanging off the rack."
+      },
+      {
+        "id": "i3",
+        "title": "Burner and relief",
+        "detail": "No gas odor. Relief and stack clear. High-limit tag current."
+      }
+    ],
+    "restart": [
+      {
+        "id": "r1",
+        "title": "People out, doors latched, loads set",
+        "detail": "Nobody in the chamber or on the track. Confirm the age recipe on the HMI."
+      },
+      {
+        "id": "r2",
+        "title": "Restore gas, then electric",
+        "detail": "Open the gas cock, then the disconnect. Purge per the burner management system. Do not bypass the purge."
+      }
+    ],
+    "emergency": {
+      "estop": "Mushroom on the Oven 5 control door, right of the latch",
+      "firstAid": "Shipping 1 first-aid cabinet, north column",
+      "fire": "ABC extinguisher at the oven aisle; pull station at the dock door",
+      "supervisor": "Shipping 1 lead",
+      "radio": "Channel 2"
+    },
+    "notes": [
+      "Oven 5 is the spare. Confirm the recipe on this HMI — it does not follow 1&2.",
+      "Call the Shipping 1 lead before taking a paired oven down — the other door may still be in cycle."
+    ],
+    "permits": [
+      "Confined space if entering the chamber"
+    ]
+  },
+  {
+    "id": "oven-67",
+    "barcode": "M-OVN-0607",
+    "name": "Age Oven 6&7",
+    "model": "SWH-1200 dual",
+    "type": "Aluminum aging oven",
+    "area": "Shipping 1",
+    "bay": "Ovens 6–7",
+    "photo": "",
+    "lockoutPhoto": "",
+    "manufacturer": "Wisconsin Oven",
+    "serial": "WO-6704",
+    "ppe": [
+      "glasses",
+      "face-shield",
+      "boots",
+      "fr-clothing",
+      "high-vis"
+    ],
+    "energy": [
+      {
+        "kind": "electrical",
+        "label": "480 V 3-phase fans, elements, and controls",
+        "isolation": "Disconnect SHP-67. Apply your lock and tag.",
+        "verify": "Control panel dark. Meter load-side lugs. Circulation fans do not bump."
+      },
+      {
+        "kind": "gas",
+        "label": "Natural gas burner train",
+        "isolation": "Close and lock gas cock GAS-67. Bleed the train per the posted diagram.",
+        "verify": "Both gas-train gauges at 0. Combustible-gas meter at the burner < 10% LEL."
+      },
+      {
+        "kind": "thermal",
+        "label": "Oven chamber ~350–400 °F during age",
+        "isolation": "Run the posted cool-down. Do not enter or reach into the chamber until the pyrometer is below the cool-to-touch limit, or treat every surface as hot.",
+        "verify": "Chamber pyrometer below the posted number. Racks cool to a gloved hand, or work as hot."
+      }
+    ],
+    "hazards": [
+      {
+        "title": "Hot racks and profiles",
+        "injury": "Severe burns from loads and oven walls",
+        "severity": "critical"
+      },
+      {
+        "title": "Gas ignition",
+        "injury": "Fire or flash in the burner / chamber",
+        "severity": "critical"
+      },
+      {
+        "title": "Walk-in chamber",
+        "injury": "Heat stress, asphyxiation if the oven is entered",
+        "severity": "critical"
+      },
+      {
+        "title": "Load cart / forklift",
+        "injury": "Struck-by on the Shipping 1 aisle",
+        "severity": "high"
+      }
+    ],
+    "lockout": [
+      {
+        "id": "n1",
+        "title": "Notify Shipping 1",
+        "detail": "These ovens sit on the dock aisle. Stop forklift traffic past 6&7 before you open a door."
+      },
+      {
+        "id": "n2",
+        "title": "Stop the age cycle from the HMI",
+        "detail": "Do not open the door on a live cycle. Abort or wait for the soak to finish, then local stop."
+      },
+      {
+        "id": "n3",
+        "title": "Lock electrical and gas",
+        "detail": "Disconnect SHP-67 OFF. Gas cock GAS-67 closed. One lock per person on each hasp. Lock both chambers on the SHP-67 hasp. Dock door must stay clear.",
+        "warn": "These ovens can auto-restart on a temperature fault. A dark screen is not isolation."
+      },
+      {
+        "id": "n4",
+        "title": "Cool down or work as hot",
+        "detail": "Follow the cool-down on the door. Pull loads only with face shield and FR. Never step into the chamber to chase a stuck stick.",
+        "warn": "Entering the oven is a permit-required confined space."
+      },
+      {
+        "id": "n5",
+        "title": "Verify zero energy",
+        "detail": "Attempt a cycle start. Fans still. Burner does not light. Gas gauges at 0."
+      }
+    ],
+    "inspect": [
+      {
+        "id": "i1",
+        "title": "Door latches and seals",
+        "detail": "Doors latch fully. Gasket not torn. Interlock kills the burners when a door is open."
+      },
+      {
+        "id": "i2",
+        "title": "Load carts and stops",
+        "detail": "Carts on the track. Wheel stops in. No profile hanging off the rack."
+      },
+      {
+        "id": "i3",
+        "title": "Burner and relief",
+        "detail": "No gas odor. Relief and stack clear. High-limit tag current."
+      }
+    ],
+    "restart": [
+      {
+        "id": "r1",
+        "title": "People out, doors latched, loads set",
+        "detail": "Nobody in the chamber or on the track. Confirm the age recipe on the HMI."
+      },
+      {
+        "id": "r2",
+        "title": "Restore gas, then electric",
+        "detail": "Open the gas cock, then the disconnect. Purge per the burner management system. Do not bypass the purge."
+      }
+    ],
+    "emergency": {
+      "estop": "Mushrooms on SHP-67; pull-cord along the dock-side track",
+      "firstAid": "Shipping 1 first-aid cabinet, north column",
+      "fire": "ABC extinguisher at the oven aisle; pull station at the dock door",
+      "supervisor": "Shipping 1 lead",
+      "radio": "Channel 2"
+    },
+    "notes": [
+      "Overhead crane rail runs above 6&7. Call the crane down before any roof or stack work.",
+      "Call the Shipping 1 lead before taking a paired oven down — the other door may still be in cycle."
+    ],
+    "permits": [
+      "Confined space if entering the chamber"
+    ]
+  },
+  {
+    "id": "extrusion-press",
+    "barcode": "M-PRS-0005",
+    "name": "Extrusion Press",
+    "model": "Press 5 main",
+    "type": "Hydraulic extrusion press",
+    "area": "Press 5",
+    "bay": "Press line",
+    "photo": "",
+    "lockoutPhoto": "",
+    "manufacturer": "Tower Extrusions",
+    "serial": "P5-MAIN",
+    "ppe": [
+      "glasses",
+      "face-shield",
+      "hearing",
+      "boots",
+      "hard-hat",
+      "fr-clothing"
+    ],
+    "energy": [
+      {
+        "kind": "electrical",
+        "label": "480 V main pumps and controls",
+        "isolation": "Open and lock disconnect PRS-5 on the west MCC. Apply personal lock and tag.",
+        "verify": "Meter pump starter T-leads. HMI dark. Confirm 0 V."
+      },
+      {
+        "kind": "hydraulic",
+        "label": "Main ram and container hydraulics",
+        "isolation": "Close and lock pump suction valves. Bleed cylinder circuits per the posted diagram.",
+        "verify": "System gauges at 0 PSI. Ram does not drift."
+      },
+      {
+        "kind": "gravity",
+        "label": "Container / stem weight",
+        "isolation": "Set factory safety blocks / pins before entering the die area.",
+        "verify": "Blocks seated and pinned. Stem resting on blocks."
+      },
+      {
+        "kind": "thermal",
+        "label": "Hot billet and tooling",
+        "isolation": "Cool tooling or treat as hot. Face shield and FR required near the die.",
+        "verify": "Pyrometer or gloved check before handling tooling."
+      }
+    ],
+    "hazards": [
+      {
+        "title": "Ram / container crush",
+        "injury": "Fatal crush at the die or container",
+        "severity": "critical"
+      },
+      {
+        "title": "High-pressure oil injection",
+        "injury": "Hydraulic injection injury",
+        "severity": "critical"
+      },
+      {
+        "title": "Hot metal / tooling",
+        "injury": "Severe burns",
+        "severity": "critical"
+      },
+      {
+        "title": "Noise",
+        "injury": "Hearing damage during cycling",
+        "severity": "moderate"
+      }
+    ],
+    "lockout": [
+      {
+        "id": "n1",
+        "title": "Notify Press 5",
+        "detail": "Tell the Press 5 supervisor and clear the cell. Post the LOTO board at the operator stand."
+      },
+      {
+        "id": "n2",
+        "title": "Stop the press and park tooling",
+        "detail": "Normal stop. Park the container and stem per the posted park sequence. Never crawl under a hanging load."
+      },
+      {
+        "id": "n3",
+        "title": "E-stop, then lock PRS-5",
+        "detail": "Hit E-stop. Open the MCC disconnect. One lock per person on the hasp."
+      },
+      {
+        "id": "n4",
+        "title": "Dump hydraulic pressure",
+        "detail": "Lock suction valves. Bleed slowly with face turned away. Catch oil in a pan."
+      },
+      {
+        "id": "n5",
+        "title": "Install safety blocks",
+        "detail": "Pin factory blocks before any die or container work."
+      },
+      {
+        "id": "n6",
+        "title": "Verify zero energy",
+        "detail": "Attempt a cycle from the HMI and palm buttons. Nothing moves. Gauges at 0."
+      }
+    ],
+    "inspect": [
+      {
+        "id": "i1",
+        "title": "Guards and light curtains",
+        "detail": "Curtains clear. Interlocks kill motion when open."
+      },
+      {
+        "id": "i2",
+        "title": "Die clamps and tooling",
+        "detail": "Clamps tight. No cracked bolts. Die set matches the job card."
+      },
+      {
+        "id": "i3",
+        "title": "Hoses and fittings",
+        "detail": "No weeping at glands or hose crimps."
+      }
+    ],
+    "restart": [
+      {
+        "id": "r1",
+        "title": "Area clear, blocks removed last",
+        "detail": "Nobody in the point of operation. Restore hydraulics, inch clear, then pull safety blocks."
+      },
+      {
+        "id": "r2",
+        "title": "Inch through one stroke",
+        "detail": "Single-stroke / jog mode. Watch for interference before production speed.",
+        "warn": "First stroke after a die change is the most dangerous. Go slow."
+      }
+    ],
+    "emergency": {
+      "estop": "Red palms both sides of the operator stand; overhead pull-cord",
+      "firstAid": "Press 5 office, west wall",
+      "fire": "ABC extinguisher at Bay column B",
+      "supervisor": "Press 5 supervisor",
+      "radio": "Channel 3"
+    },
+    "notes": [
+      "Die changes require a second qualified person.",
+      "Never use the ram as a crane."
+    ],
+    "permits": [
+      "Die set (two-person)"
+    ]
+  },
+  {
+    "id": "shear",
+    "barcode": "M-SHR-0005",
+    "name": "Shear",
+    "model": "Press 5 shear",
+    "type": "Hot billet / profile shear",
+    "area": "Press 5",
+    "bay": "Downstream of press",
+    "photo": "",
+    "lockoutPhoto": "",
+    "manufacturer": "Tower Extrusions",
+    "serial": "P5-SHR",
+    "ppe": [
+      "glasses",
+      "face-shield",
+      "hearing",
+      "boots",
+      "hard-hat",
+      "fr-clothing",
+      "cut-gloves"
+    ],
+    "energy": [
+      {
+        "kind": "electrical",
+        "label": "480 V shear motor / hydraulics",
+        "isolation": "Lock disconnect SHR-5 on the shear cabinet.",
+        "verify": "Meter T-leads. Blade does not jog."
+      },
+      {
+        "kind": "hydraulic",
+        "label": "Shear cylinder circuit",
+        "isolation": "Close and lock isolation valve. Bleed residual pressure.",
+        "verify": "Gauge at 0. Blade does not drift."
+      },
+      {
+        "kind": "kinetic",
+        "label": "Blade / hold-down motion",
+        "isolation": "Block the blade in the safe position per the posted diagram.",
+        "verify": "Blade blocked. Hold-down pinned."
+      }
+    ],
+    "hazards": [
+      {
+        "title": "Blade shear",
+        "injury": "Amputation at the cut point",
+        "severity": "critical"
+      },
+      {
+        "title": "Hold-down crush",
+        "injury": "Crush under the clamp",
+        "severity": "critical"
+      },
+      {
+        "title": "Hot profile",
+        "injury": "Burns from freshly cut metal",
+        "severity": "high"
+      }
+    ],
+    "lockout": [
+      {
+        "id": "n1",
+        "title": "Notify Press 5 and stop the puller feed",
+        "detail": "Do not shear with live metal in the throat."
+      },
+      {
+        "id": "n2",
+        "title": "Park the blade",
+        "detail": "Jog blade to the posted safe position under power, then stop."
+      },
+      {
+        "id": "n3",
+        "title": "Lock SHR-5 and dump pressure",
+        "detail": "Disconnect OFF. Bleed hydraulics. Apply lock and tag."
+      },
+      {
+        "id": "n4",
+        "title": "Block the blade",
+        "detail": "Install the factory blade block / pin."
+      },
+      {
+        "id": "n5",
+        "title": "Verify zero energy",
+        "detail": "Attempt jog. Blade still. Gauge at 0."
+      }
+    ],
+    "inspect": [
+      {
+        "id": "i1",
+        "title": "Guards and light curtain",
+        "detail": "Throat guards in place. Curtain trips motion."
+      },
+      {
+        "id": "i2",
+        "title": "Blade condition",
+        "detail": "No cracked edge. Hold-down pads intact."
+      }
+    ],
+    "restart": [
+      {
+        "id": "r1",
+        "title": "Remove block, restore energy",
+        "detail": "Area clear. Restore hydraulics, then electric."
+      },
+      {
+        "id": "r2",
+        "title": "Bump cut with scrap",
+        "detail": "One slow cut on scrap before production metal."
+      }
+    ],
+    "emergency": {
+      "estop": "Local mushroom at the drive; Press 5 line pull-cord",
+      "firstAid": "Press 5 office, west wall",
+      "fire": "ABC extinguisher on the Press 5 aisle",
+      "supervisor": "Press 5 supervisor",
+      "radio": "Channel 3"
+    },
+    "notes": [
+      "Hot cuts only with face shield and FR when metal is above cool-to-touch."
+    ],
+    "permits": []
+  },
+  {
+    "id": "high-puller",
+    "barcode": "M-HPL-0005",
+    "name": "High Puller",
+    "model": "High Puller",
+    "type": "Extrusion puller (high)",
+    "area": "Press 5",
+    "bay": "Puller high side",
+    "photo": "",
+    "lockoutPhoto": "",
+    "manufacturer": "Tower Extrusions",
+    "serial": "P5-0005",
+    "ppe": [
+      "glasses",
+      "hearing",
+      "boots",
+      "hard-hat",
+      "cut-gloves"
+    ],
+    "energy": [
+      {
+        "kind": "electrical",
+        "label": "Servo / VFD carriage drive",
+        "isolation": "Lock disconnect for High Puller on the Press 5 puller panel.",
+        "verify": "Drive display dark. Meter motor leads."
+      },
+      {
+        "kind": "pneumatic",
+        "label": "Clamp / gripper air",
+        "isolation": "Close and lock the air supply. Dump residual air at the FRL.",
+        "verify": "Clamp opens freely by hand. Gauge at 0."
+      },
+      {
+        "kind": "kinetic",
+        "label": "Carriage coast",
+        "isolation": "Wait for full stop. Chock the carriage.",
+        "verify": "Carriage does not roll when pushed."
+      }
+    ],
+    "hazards": [
+      {
+        "title": "Carriage crush / pinch",
+        "injury": "Crush at the carriage and clamp",
+        "severity": "critical"
+      },
+      {
+        "title": "Hot extrusion",
+        "injury": "Burns from the profile",
+        "severity": "high"
+      },
+      {
+        "title": "Unexpected restart",
+        "injury": "Struck-by if the puller homes",
+        "severity": "high"
+      }
+    ],
+    "lockout": [
+      {
+        "id": "n1",
+        "title": "Hold the press and sister puller",
+        "detail": "Tell the press operator. Park High Puller clear of the saw and stretcher."
+      },
+      {
+        "id": "n2",
+        "title": "Normal stop and chock",
+        "detail": "Stop the carriage. Chock both sides."
+      },
+      {
+        "id": "n3",
+        "title": "Lock electric and air",
+        "detail": "Disconnect OFF. Air locked and dumped. Tag both."
+      },
+      {
+        "id": "n4",
+        "title": "Verify zero energy",
+        "detail": "Attempt jog and clamp. Nothing moves."
+      }
+    ],
+    "inspect": [
+      {
+        "id": "i1",
+        "title": "Clamp pads and sensors",
+        "detail": "Pads not glazed. Home / overtravel switches free."
+      },
+      {
+        "id": "i2",
+        "title": "Cable / track",
+        "detail": "Energy chain free. No pinched hoses."
+      }
+    ],
+    "restart": [
+      {
+        "id": "r1",
+        "title": "Remove chocks, restore air then electric",
+        "detail": "Bump jog clear of people before production."
+      }
+    ],
+    "emergency": {
+      "estop": "Local mushroom at the drive; Press 5 line pull-cord",
+      "firstAid": "Press 5 office, west wall",
+      "fire": "ABC extinguisher on the Press 5 aisle",
+      "supervisor": "Press 5 supervisor",
+      "radio": "Channel 3"
+    },
+    "notes": [
+      "High Puller and its sister unit can share interlocks — confirm both are safe before restart."
+    ],
+    "permits": []
+  },
+  {
+    "id": "low-puller",
+    "barcode": "M-LPL-0005",
+    "name": "Low Puller",
+    "model": "Low Puller",
+    "type": "Extrusion puller (low)",
+    "area": "Press 5",
+    "bay": "Puller low side",
+    "photo": "",
+    "lockoutPhoto": "",
+    "manufacturer": "Tower Extrusions",
+    "serial": "P5-0005",
+    "ppe": [
+      "glasses",
+      "hearing",
+      "boots",
+      "hard-hat",
+      "cut-gloves"
+    ],
+    "energy": [
+      {
+        "kind": "electrical",
+        "label": "Servo / VFD carriage drive",
+        "isolation": "Lock disconnect for Low Puller on the Press 5 puller panel.",
+        "verify": "Drive display dark. Meter motor leads."
+      },
+      {
+        "kind": "pneumatic",
+        "label": "Clamp / gripper air",
+        "isolation": "Close and lock the air supply. Dump residual air at the FRL.",
+        "verify": "Clamp opens freely by hand. Gauge at 0."
+      },
+      {
+        "kind": "kinetic",
+        "label": "Carriage coast",
+        "isolation": "Wait for full stop. Chock the carriage.",
+        "verify": "Carriage does not roll when pushed."
+      }
+    ],
+    "hazards": [
+      {
+        "title": "Carriage crush / pinch",
+        "injury": "Crush at the carriage and clamp",
+        "severity": "critical"
+      },
+      {
+        "title": "Hot extrusion",
+        "injury": "Burns from the profile",
+        "severity": "high"
+      },
+      {
+        "title": "Unexpected restart",
+        "injury": "Struck-by if the puller homes",
+        "severity": "high"
+      }
+    ],
+    "lockout": [
+      {
+        "id": "n1",
+        "title": "Hold the press and sister puller",
+        "detail": "Tell the press operator. Park Low Puller clear of the saw and stretcher."
+      },
+      {
+        "id": "n2",
+        "title": "Normal stop and chock",
+        "detail": "Stop the carriage. Chock both sides."
+      },
+      {
+        "id": "n3",
+        "title": "Lock electric and air",
+        "detail": "Disconnect OFF. Air locked and dumped. Tag both."
+      },
+      {
+        "id": "n4",
+        "title": "Verify zero energy",
+        "detail": "Attempt jog and clamp. Nothing moves."
+      }
+    ],
+    "inspect": [
+      {
+        "id": "i1",
+        "title": "Clamp pads and sensors",
+        "detail": "Pads not glazed. Home / overtravel switches free."
+      },
+      {
+        "id": "i2",
+        "title": "Cable / track",
+        "detail": "Energy chain free. No pinched hoses."
+      }
+    ],
+    "restart": [
+      {
+        "id": "r1",
+        "title": "Remove chocks, restore air then electric",
+        "detail": "Bump jog clear of people before production."
+      }
+    ],
+    "emergency": {
+      "estop": "Local mushroom at the drive; Press 5 line pull-cord",
+      "firstAid": "Press 5 office, west wall",
+      "fire": "ABC extinguisher on the Press 5 aisle",
+      "supervisor": "Press 5 supervisor",
+      "radio": "Channel 3"
+    },
+    "notes": [
+      "Low Puller and its sister unit can share interlocks — confirm both are safe before restart."
+    ],
+    "permits": []
+  },
+  {
+    "id": "head-stretcher",
+    "barcode": "M-HST-0005",
+    "name": "Head Stretcher",
+    "model": "Head Stretcher",
+    "type": "Profile stretcher jaw",
+    "area": "Press 5",
+    "bay": "Stretcher head",
+    "photo": "",
+    "lockoutPhoto": "",
+    "manufacturer": "Tower Extrusions",
+    "serial": "P5-0005",
+    "ppe": [
+      "glasses",
+      "face-shield",
+      "hearing",
+      "boots",
+      "hard-hat",
+      "cut-gloves"
+    ],
+    "energy": [
+      {
+        "kind": "electrical",
+        "label": "Hydraulic pump / jaw controls",
+        "isolation": "Lock disconnect for Head Stretcher.",
+        "verify": "Pump dark. Meter T-leads."
+      },
+      {
+        "kind": "hydraulic",
+        "label": "Jaw clamp circuit",
+        "isolation": "Close isolation valve. Bleed residual pressure.",
+        "verify": "Gauge at 0. Jaws do not drift closed."
+      },
+      {
+        "kind": "gravity",
+        "label": "Jaw / carriage mass",
+        "isolation": "Support or pin jaws per the posted diagram before reaching in.",
+        "verify": "Pins seated. Jaws cannot free-fall."
+      }
+    ],
+    "hazards": [
+      {
+        "title": "Jaw crush",
+        "injury": "Amputation / crush in the jaws",
+        "severity": "critical"
+      },
+      {
+        "title": "Stored stretch energy",
+        "injury": "Struck-by if the profile snaps",
+        "severity": "critical"
+      },
+      {
+        "title": "Hot profile",
+        "injury": "Burns",
+        "severity": "high"
+      }
+    ],
+    "lockout": [
+      {
+        "id": "n1",
+        "title": "Relieve stretch on the profile",
+        "detail": "Do not work on jaws while a profile is under tension."
+      },
+      {
+        "id": "n2",
+        "title": "Park jaws open",
+        "detail": "Open jaws fully. Pin if required."
+      },
+      {
+        "id": "n3",
+        "title": "Lock electric and hydraulics",
+        "detail": "Disconnect OFF. Isolation valve locked. Bleed."
+      },
+      {
+        "id": "n4",
+        "title": "Verify zero energy",
+        "detail": "Attempt clamp. Jaws still. Gauge at 0."
+      }
+    ],
+    "inspect": [
+      {
+        "id": "i1",
+        "title": "Jaw teeth and pins",
+        "detail": "Teeth sharp and seated. Safety pins present."
+      },
+      {
+        "id": "i2",
+        "title": "Hoses",
+        "detail": "No leaks at the cylinder glands."
+      }
+    ],
+    "restart": [
+      {
+        "id": "r1",
+        "title": "Pins out, area clear",
+        "detail": "Restore energy. Bump jaws empty before grabbing metal."
+      }
+    ],
+    "emergency": {
+      "estop": "Local mushroom at the drive; Press 5 line pull-cord",
+      "firstAid": "Press 5 office, west wall",
+      "fire": "ABC extinguisher on the Press 5 aisle",
+      "supervisor": "Press 5 supervisor",
+      "radio": "Channel 3"
+    },
+    "notes": [
+      "Never stand in line with a stretched profile."
+    ],
+    "permits": []
+  },
+  {
+    "id": "tail-stretcher",
+    "barcode": "M-TST-0005",
+    "name": "Tail Stretcher",
+    "model": "Tail Stretcher",
+    "type": "Profile stretcher jaw",
+    "area": "Press 5",
+    "bay": "Stretcher tail",
+    "photo": "",
+    "lockoutPhoto": "",
+    "manufacturer": "Tower Extrusions",
+    "serial": "P5-0005",
+    "ppe": [
+      "glasses",
+      "face-shield",
+      "hearing",
+      "boots",
+      "hard-hat",
+      "cut-gloves"
+    ],
+    "energy": [
+      {
+        "kind": "electrical",
+        "label": "Hydraulic pump / jaw controls",
+        "isolation": "Lock disconnect for Tail Stretcher.",
+        "verify": "Pump dark. Meter T-leads."
+      },
+      {
+        "kind": "hydraulic",
+        "label": "Jaw clamp circuit",
+        "isolation": "Close isolation valve. Bleed residual pressure.",
+        "verify": "Gauge at 0. Jaws do not drift closed."
+      },
+      {
+        "kind": "gravity",
+        "label": "Jaw / carriage mass",
+        "isolation": "Support or pin jaws per the posted diagram before reaching in.",
+        "verify": "Pins seated. Jaws cannot free-fall."
+      }
+    ],
+    "hazards": [
+      {
+        "title": "Jaw crush",
+        "injury": "Amputation / crush in the jaws",
+        "severity": "critical"
+      },
+      {
+        "title": "Stored stretch energy",
+        "injury": "Struck-by if the profile snaps",
+        "severity": "critical"
+      },
+      {
+        "title": "Hot profile",
+        "injury": "Burns",
+        "severity": "high"
+      }
+    ],
+    "lockout": [
+      {
+        "id": "n1",
+        "title": "Relieve stretch on the profile",
+        "detail": "Do not work on jaws while a profile is under tension."
+      },
+      {
+        "id": "n2",
+        "title": "Park jaws open",
+        "detail": "Open jaws fully. Pin if required."
+      },
+      {
+        "id": "n3",
+        "title": "Lock electric and hydraulics",
+        "detail": "Disconnect OFF. Isolation valve locked. Bleed."
+      },
+      {
+        "id": "n4",
+        "title": "Verify zero energy",
+        "detail": "Attempt clamp. Jaws still. Gauge at 0."
+      }
+    ],
+    "inspect": [
+      {
+        "id": "i1",
+        "title": "Jaw teeth and pins",
+        "detail": "Teeth sharp and seated. Safety pins present."
+      },
+      {
+        "id": "i2",
+        "title": "Hoses",
+        "detail": "No leaks at the cylinder glands."
+      }
+    ],
+    "restart": [
+      {
+        "id": "r1",
+        "title": "Pins out, area clear",
+        "detail": "Restore energy. Bump jaws empty before grabbing metal."
+      }
+    ],
+    "emergency": {
+      "estop": "Local mushroom at the drive; Press 5 line pull-cord",
+      "firstAid": "Press 5 office, west wall",
+      "fire": "ABC extinguisher on the Press 5 aisle",
+      "supervisor": "Press 5 supervisor",
+      "radio": "Channel 3"
+    },
+    "notes": [
+      "Never stand in line with a stretched profile."
+    ],
+    "permits": []
+  },
+  {
+    "id": "hot-saw",
+    "barcode": "M-HSW-0005",
+    "name": "Hot Saw",
+    "model": "Hot Saw",
+    "type": "Flying / hot cut-off saw",
+    "area": "Press 5",
+    "bay": "Hot saw station",
+    "photo": "",
+    "lockoutPhoto": "",
+    "manufacturer": "Tower Extrusions",
+    "serial": "P5-0005",
+    "ppe": [
+      "glasses",
+      "face-shield",
+      "hearing",
+      "boots",
+      "hard-hat",
+      "cut-gloves"
+    ],
+    "energy": [
+      {
+        "kind": "electrical",
+        "label": "Saw motor and feed drives",
+        "isolation": "Lock disconnect for Hot Saw.",
+        "verify": "Motor leads at 0 V. Blade does not spin."
+      },
+      {
+        "kind": "pneumatic",
+        "label": "Clamp air",
+        "isolation": "Lock and dump clamp air.",
+        "verify": "Clamps free. Gauge at 0."
+      },
+      {
+        "kind": "kinetic",
+        "label": "Blade coast-down",
+        "isolation": "Wait until the blade is fully stopped. Do not brake with scrap.",
+        "verify": "Blade still when spun by hand with power locked (use a stick — never bare hands)."
+      }
+    ],
+    "hazards": [
+      {
+        "title": "Blade contact",
+        "injury": "Amputation / laceration",
+        "severity": "critical"
+      },
+      {
+        "title": "Flying chips / sparks",
+        "injury": "Eye injury, burns",
+        "severity": "high"
+      },
+      {
+        "title": "Clamp crush",
+        "injury": "Hand caught under clamp",
+        "severity": "high"
+      }
+    ],
+    "lockout": [
+      {
+        "id": "n1",
+        "title": "Stop infeed and clear the table",
+        "detail": "No metal in the cut path."
+      },
+      {
+        "id": "n2",
+        "title": "Normal stop, wait for coast-down",
+        "detail": "Confirm blade stopped before approaching."
+      },
+      {
+        "id": "n3",
+        "title": "Lock electric and air",
+        "detail": "Disconnect OFF. Air dumped. Tag both."
+      },
+      {
+        "id": "n4",
+        "title": "Verify zero energy",
+        "detail": "Attempt start and clamp. Blade still."
+      }
+    ],
+    "inspect": [
+      {
+        "id": "i1",
+        "title": "Guards and hood",
+        "detail": "Blade guard and chip hood in place."
+      },
+      {
+        "id": "i2",
+        "title": "Blade and clamps",
+        "detail": "Blade true. Clamp pads intact."
+      }
+    ],
+    "restart": [
+      {
+        "id": "r1",
+        "title": "Guards on, bump cut",
+        "detail": "Restore energy. One slow cut on scrap before production."
+      }
+    ],
+    "emergency": {
+      "estop": "Local mushroom at the drive; Press 5 line pull-cord",
+      "firstAid": "Press 5 office, west wall",
+      "fire": "ABC extinguisher on the Press 5 aisle",
+      "supervisor": "Press 5 supervisor",
+      "radio": "Channel 3"
+    },
+    "notes": [
+      "Hearing protection required any time the saw runs."
+    ],
+    "permits": []
+  },
+  {
+    "id": "finish-saw",
+    "barcode": "M-FSW-0005",
+    "name": "Finish Saw",
+    "model": "Finish Saw",
+    "type": "Finish cut-off saw",
+    "area": "Press 5",
+    "bay": "Finish saw station",
+    "photo": "",
+    "lockoutPhoto": "",
+    "manufacturer": "Tower Extrusions",
+    "serial": "P5-0005",
+    "ppe": [
+      "glasses",
+      "face-shield",
+      "hearing",
+      "boots",
+      "hard-hat",
+      "cut-gloves"
+    ],
+    "energy": [
+      {
+        "kind": "electrical",
+        "label": "Saw motor and feed drives",
+        "isolation": "Lock disconnect for Finish Saw.",
+        "verify": "Motor leads at 0 V. Blade does not spin."
+      },
+      {
+        "kind": "pneumatic",
+        "label": "Clamp air",
+        "isolation": "Lock and dump clamp air.",
+        "verify": "Clamps free. Gauge at 0."
+      },
+      {
+        "kind": "kinetic",
+        "label": "Blade coast-down",
+        "isolation": "Wait until the blade is fully stopped. Do not brake with scrap.",
+        "verify": "Blade still when spun by hand with power locked (use a stick — never bare hands)."
+      }
+    ],
+    "hazards": [
+      {
+        "title": "Blade contact",
+        "injury": "Amputation / laceration",
+        "severity": "critical"
+      },
+      {
+        "title": "Flying chips / sparks",
+        "injury": "Eye injury, burns",
+        "severity": "high"
+      },
+      {
+        "title": "Clamp crush",
+        "injury": "Hand caught under clamp",
+        "severity": "high"
+      }
+    ],
+    "lockout": [
+      {
+        "id": "n1",
+        "title": "Stop infeed and clear the table",
+        "detail": "No metal in the cut path."
+      },
+      {
+        "id": "n2",
+        "title": "Normal stop, wait for coast-down",
+        "detail": "Confirm blade stopped before approaching."
+      },
+      {
+        "id": "n3",
+        "title": "Lock electric and air",
+        "detail": "Disconnect OFF. Air dumped. Tag both."
+      },
+      {
+        "id": "n4",
+        "title": "Verify zero energy",
+        "detail": "Attempt start and clamp. Blade still."
+      }
+    ],
+    "inspect": [
+      {
+        "id": "i1",
+        "title": "Guards and hood",
+        "detail": "Blade guard and chip hood in place."
+      },
+      {
+        "id": "i2",
+        "title": "Blade and clamps",
+        "detail": "Blade true. Clamp pads intact."
+      }
+    ],
+    "restart": [
+      {
+        "id": "r1",
+        "title": "Guards on, bump cut",
+        "detail": "Restore energy. One slow cut on scrap before production."
+      }
+    ],
+    "emergency": {
+      "estop": "Local mushroom at the drive; Press 5 line pull-cord",
+      "firstAid": "Press 5 office, west wall",
+      "fire": "ABC extinguisher on the Press 5 aisle",
+      "supervisor": "Press 5 supervisor",
+      "radio": "Channel 3"
+    },
+    "notes": [
+      "Hearing protection required any time the saw runs."
+    ],
+    "permits": []
+  },
+  {
+    "id": "billet-heater",
+    "barcode": "M-BLH-0005",
+    "name": "Billet Heater",
+    "model": "Press 5 billet heater",
+    "type": "Induction / gas billet heater",
+    "area": "Press 5",
+    "bay": "Billet furnace",
+    "photo": "",
+    "lockoutPhoto": "",
+    "manufacturer": "Tower Extrusions",
+    "serial": "P5-BLH",
+    "ppe": [
+      "glasses",
+      "face-shield",
+      "boots",
+      "fr-clothing",
+      "hard-hat",
+      "high-vis"
+    ],
+    "energy": [
+      {
+        "kind": "electrical",
+        "label": "480 V power and controls",
+        "isolation": "Lock disconnect BLH-5.",
+        "verify": "Panel dark. Meter load-side lugs."
+      },
+      {
+        "kind": "gas",
+        "label": "Natural gas (if gas-fired zones)",
+        "isolation": "Close and lock gas cock. Bleed per diagram.",
+        "verify": "Gauges at 0. LEL < 10%."
+      },
+      {
+        "kind": "thermal",
+        "label": "Hot billets and coil / chamber",
+        "isolation": "Cool-down or treat every surface as hot.",
+        "verify": "Pyrometer below posted limit or work as hot."
+      },
+      {
+        "kind": "kinetic",
+        "label": "Billet conveyor / pusher",
+        "isolation": "Lock conveyor drive. Chock billets.",
+        "verify": "Pusher does not jog. Billets chocked."
+      }
+    ],
+    "hazards": [
+      {
+        "title": "Hot billet",
+        "injury": "Severe burns",
+        "severity": "critical"
+      },
+      {
+        "title": "Gas / induction energy",
+        "injury": "Fire, flash, electric shock",
+        "severity": "critical"
+      },
+      {
+        "title": "Pusher crush",
+        "injury": "Crush on the billet track",
+        "severity": "high"
+      }
+    ],
+    "lockout": [
+      {
+        "id": "n1",
+        "title": "Notify Press 5 — press will starve",
+        "detail": "Tell the supervisor before taking the heater down."
+      },
+      {
+        "id": "n2",
+        "title": "Stop heat and clear billets if safe",
+        "detail": "Do not reach into a live chamber for a stuck billet."
+      },
+      {
+        "id": "n3",
+        "title": "Lock electric, gas, and conveyor",
+        "detail": "All isolation points get your lock."
+      },
+      {
+        "id": "n4",
+        "title": "Cool or work as hot",
+        "detail": "Follow posted cool-down. FR and face shield for hot work."
+      },
+      {
+        "id": "n5",
+        "title": "Verify zero energy",
+        "detail": "Attempt start. No heat, no motion, gauges at 0."
+      }
+    ],
+    "inspect": [
+      {
+        "id": "i1",
+        "title": "Guards and interlocks",
+        "detail": "Doors / covers interlocked."
+      },
+      {
+        "id": "i2",
+        "title": "Thermocouples and high-limit",
+        "detail": "High-limit tag current."
+      }
+    ],
+    "restart": [
+      {
+        "id": "r1",
+        "title": "Restore gas/electric per BMS",
+        "detail": "Purge if required. Do not bypass purge."
+      },
+      {
+        "id": "r2",
+        "title": "Bump conveyor empty",
+        "detail": "Confirm tracking before loading billets."
+      }
+    ],
+    "emergency": {
+      "estop": "Mushroom on BLH-5 cabinet; line pull-cord at the billet track",
+      "firstAid": "Press 5 office, west wall",
+      "fire": "ABC extinguisher on the Press 5 aisle",
+      "supervisor": "Press 5 supervisor",
+      "radio": "Channel 3"
+    },
+    "notes": [
+      "Hot billets can roll — chock the track before any track work."
+    ],
+    "permits": [
+      "Confined space if entering the heater chamber"
+    ]
+  },
+  {
+    "id": "bics",
+    "barcode": "M-BIC-0005",
+    "name": "BICS",
+    "model": "BICS",
+    "type": "Billet infeed / casting system controls",
+    "area": "Press 5",
+    "bay": "BICS station",
+    "photo": "",
+    "lockoutPhoto": "",
+    "manufacturer": "Tower Extrusions",
+    "serial": "P5-BICS",
+    "ppe": [
+      "glasses",
+      "hearing",
+      "boots",
+      "hard-hat",
+      "high-vis",
+      "cut-gloves"
+    ],
+    "energy": [
+      {
+        "kind": "electrical",
+        "label": "BICS PLC and drives",
+        "isolation": "Lock disconnect BICS-5 on the BICS cabinet.",
+        "verify": "HMI dark. Meter drive leads."
+      },
+      {
+        "kind": "pneumatic",
+        "label": "Gate / clamp air",
+        "isolation": "Lock and dump air supply.",
+        "verify": "Gates free. Gauge at 0."
+      },
+      {
+        "kind": "kinetic",
+        "label": "Infeed motion",
+        "isolation": "Chock moving elements. Wait for coast-down.",
+        "verify": "No motion on jog attempt."
+      }
+    ],
+    "hazards": [
+      {
+        "title": "Infeed crush / pinch",
+        "injury": "Crush at gates and transfers",
+        "severity": "critical"
+      },
+      {
+        "title": "Unexpected auto sequence",
+        "injury": "Struck-by during a recipe step",
+        "severity": "high"
+      },
+      {
+        "title": "Hot billet interface",
+        "injury": "Burns at the heater handoff",
+        "severity": "high"
+      }
+    ],
+    "lockout": [
+      {
+        "id": "n1",
+        "title": "Hold Press 5 billet flow",
+        "detail": "Tell the press and billet-heater operators."
+      },
+      {
+        "id": "n2",
+        "title": "Abort the active sequence",
+        "detail": "Park gates in the safe position from the HMI, then local stop."
+      },
+      {
+        "id": "n3",
+        "title": "Lock BICS-5 and air",
+        "detail": "Disconnect OFF. Air dumped. Tag both."
+      },
+      {
+        "id": "n4",
+        "title": "Verify zero energy",
+        "detail": "Attempt sequence start and jog. Nothing moves."
+      }
+    ],
+    "inspect": [
+      {
+        "id": "i1",
+        "title": "Guards and light curtains",
+        "detail": "Curtains clear. Interlocks functional."
+      },
+      {
+        "id": "i2",
+        "title": "Sensors and E-stops",
+        "detail": "E-stops latch. Sensors clean."
+      }
+    ],
+    "restart": [
+      {
+        "id": "r1",
+        "title": "Area clear, restore air then electric",
+        "detail": "Run the empty homing sequence before production billets."
+      }
+    ],
+    "emergency": {
+      "estop": "Local mushroom at the drive; Press 5 line pull-cord",
+      "firstAid": "Press 5 office, west wall",
+      "fire": "ABC extinguisher on the Press 5 aisle",
+      "supervisor": "Press 5 supervisor",
+      "radio": "Channel 3"
+    },
+    "notes": [
+      "BICS can auto-index on some faults — LOTO the disconnect, not just the HMI stop."
+    ],
+    "permits": []
+  }
+]

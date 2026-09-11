@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="topbar">
+  <a class="icon-btn" href="{{ url_for('index') }}{{ builder_qs }}" aria-label="Back">←</a>
+  <div class="titles">
+    <p class="eyebrow">Admin</p>
+    <h1>Event log</h1>
+  </div>
+</div>
+
+{% if not events %}
+<p style="color:var(--muted);margin-top:1.5rem;">No lockout or restart submissions yet.</p>
+{% else %}
+<div class="table-wrap" style="margin-top:1rem;">
+  <table class="data">
+    <thead>
+      <tr>
+        <th>When</th>
+        <th>Action</th>
+        <th>Machine</th>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Reason</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for e in events %}
+      <tr>
+        <td>{{ e.created_at }}</td>
+        <td class="action-{{ e.action }}">{{ e.action }}</td>
+        <td>
+          <div>{{ e.machine_name }}</div>
+          <div style="color:var(--faint);font-size:0.75rem;">{{ e.barcode or e.machine_id }}</div>
+        </td>
+        <td>{{ e.person_name }}</td>
+        <td>{{ e.department }}</td>
+        <td>{{ e.reason or "—" }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endif %}
+{% endblock %}
