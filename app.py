@@ -49,7 +49,7 @@ ENERGY_LABEL = {
     "gas": "Fuel gas",
 }
 
-AREA_ORDER = ["Shipping 1", "Press 5"]
+AREA_ORDER = ["Shipping 1", "Press 1", "Press 2", "Press 3", "Press 4", "Press 5"]
 
 DISCLAIMER = (
     "This card supports the site energy-control program (OSHA 29 CFR 1910.147). "
